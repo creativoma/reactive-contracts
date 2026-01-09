@@ -5,16 +5,23 @@
   "description": "Basic usage example for Reactive Contracts",
   "type": "module",
   "scripts": {
+    "compile": "rcontracts compile",
+    "validate": "rcontracts validate",
+    "server": "node server.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@reactive-contracts/core": "workspace:*",
     "@reactive-contracts/react": "workspace:*",
-    "@reactive-contracts/server": "workspace:*"
+    "@reactive-contracts/server": "workspace:*",
+    "express": "^5.0.1",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
     "typescript": "^5.9.3"
   }
 }
