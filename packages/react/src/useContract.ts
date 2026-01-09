@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { Contract, ContractStatus } from '@reactive-contracts/core';
 import type { UseContractOptions, UseContractResult } from './types.js';
+import { executeContract } from './client.js';
 
 // Simple in-memory cache
 const contractCache = new Map<string, any>();
@@ -36,7 +37,7 @@ export function useContract<TData = any>(
   contract: Contract,
   options: UseContractOptions = {}
 ): UseContractResult<TData> {
-  const { params, enabled = true, refetchInterval, onSuccess, onError } = options;
+  const { params, enabled = true, refetchInterval, onSuccess, onError, useMockData = false } = options;
 
   const [data, setData] = useState<TData | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
@@ -56,7 +57,7 @@ export function useContract<TData = any>(
 
       // Check cache first
       const cached = contractCache.get(cacheKey);
-      if (cached) {
+      if (cached && Date.now() - cached.timestamp < 60000) { // 1 minute cache
         setData(cached.data);
         setContractStatus(cached.status);
         setLoading(false);
@@ -64,24 +65,61 @@ export function useContract<TData = any>(
         return;
       }
 
-      // In a real implementation, this would call the backend
-      // For now, we'll simulate a response
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      let result;
+      
+      // Use real HTTP if configured, otherwise fallback to mock
+      if (useMockData) {
+        // Mock data mode for testing
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        const mockData = createMockData(contract);
+        result = {
+          data: mockData,
+          status: defaultContractStatus,
+          metadata: {
+            executionTime: 100,
+            cacheHit: false,
+            derivedAt: 'origin' as const,
+          },
+        };
+      } else {
+        // Try real HTTP execution
+        try {
+          result = await executeContract<TData>(contract, params);
+        } catch (err) {
+          // If HTTP fails, fallback to mock data in development
+          if (process.env.NODE_ENV === 'development') {
+            console.warn(
+              `Contract ${contract.definition.name} failed to execute via HTTP. Falling back to mock data.`,
+              err
+            );
+            await new Promise((resolve) => setTimeout(resolve, 100));
+            const mockData = createMockData(contract);
+            result = {
+              data: mockData,
+              status: defaultContractStatus,
+              metadata: {
+                executionTime: 100,
+                cacheHit: false,
+                derivedAt: 'origin' as const,
+              },
+            };
+          } else {
+            throw err;
+          }
+        }
+      }
 
-      // Mock data based on contract shape
-      const mockData = createMockData(contract);
-
-      const result = {
-        data: mockData,
-        status: defaultContractStatus,
+      const cacheEntry = {
+        data: result.data,
+        status: result.status,
         timestamp: Date.now(),
         params,
       };
 
-      contractCache.set(cacheKey, result);
-      setData(mockData);
-      setContractStatus(defaultContractStatus);
-      onSuccess?.(mockData);
+      contractCache.set(cacheKey, cacheEntry);
+      setData(result.data);
+      setContractStatus(result.status);
+      onSuccess?.(result.data);
     } catch (err) {
       const errorObj = err instanceof Error ? err : new Error('Unknown error');
       setError(errorObj);
@@ -89,7 +127,7 @@ export function useContract<TData = any>(
     } finally {
       setLoading(false);
     }
-  }, [contract, params, enabled, onSuccess, onError]);
+  }, [contract, params, enabled, useMockData, onSuccess, onError]);
 
   const refetch = useCallback(async () => {
     const cacheKey = getCacheKey(contract, params);
