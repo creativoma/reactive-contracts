@@ -1,0 +1,57 @@
+{
+  "name": "reactive-contracts",
+  "version": "0.1.0-alpha",
+  "private": true,
+  "description": "Bidirectional API contracts that put frontend in control",
+  "keywords": [
+    "contracts",
+    "api",
+    "typescript",
+    "react",
+    "compiler",
+    "validation"
+  ],
+  "homepage": "https://github.com/creativoma/reactive-contracts",
+  "bugs": {
+    "url": "https://github.com/creativoma/reactive-contracts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativoma/reactive-contracts.git"
+  },
+  "license": "MIT",
+  "author": "Reactive Contracts Contributors",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.19",
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.4",
+    "typescript": "^5.4.5",
+    "vitest": "^1.3.1"
+  },
+  "packageManager": "pnpm@9.1.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
