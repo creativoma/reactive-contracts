@@ -1,0 +1,62 @@
+{
+  "name": "@reactive-contracts/server",
+  "version": "0.1.0-alpha",
+  "description": "Server-side implementation utilities for Reactive Contracts",
+  "keywords": [
+    "contracts",
+    "server",
+    "backend",
+    "api"
+  ],
+  "homepage": "https://github.com/creativoma/reactive-contracts",
+  "bugs": {
+    "url": "https://github.com/creativoma/reactive-contracts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativoma/reactive-contracts.git",
+    "directory": "packages/server"
+  },
+  "license": "MIT",
+  "author": "Reactive Contracts Contributors",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@reactive-contracts/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.3.1",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.3.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
