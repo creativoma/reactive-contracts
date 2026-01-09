@@ -1,4 +1,5 @@
 import type { Contract, ContractStatus } from '@reactive-contracts/core';
+import { parseLatencyToMs } from '@reactive-contracts/core';
 
 /**
  * Configuration for the contract client
@@ -157,26 +158,4 @@ function evaluateLatencyStatus(
   }
 }
 
-/**
- * Parse latency string to milliseconds
- */
-function parseLatencyToMs(latency: string): number | null {
-  const match = latency.match(/^(\d+)(ms|s|m)$/);
-  if (!match || !match[1] || !match[2]) {
-    return null;
-  }
-
-  const value = parseInt(match[1], 10);
-  const unit = match[2];
-
-  switch (unit) {
-    case 'ms':
-      return value;
-    case 's':
-      return value * 1000;
-    case 'm':
-      return value * 60 * 1000;
-    default:
-      return null;
-  }
-}
+// Removed parseLatencyToMs - now imported from @reactive-contracts/core

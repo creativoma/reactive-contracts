@@ -7,7 +7,7 @@
   "scripts": {
     "compile": "rcontracts compile",
     "validate": "rcontracts validate",
-    "server": "node server.js",
+    "server": "tsx server.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "@types/react": "^19.2.7",
     "@types/express": "^5.0.0",
     "@types/cors": "^2.8.17",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "tsx": "^4.21.0"
   }
 }

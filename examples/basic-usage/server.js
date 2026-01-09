@@ -1,7 +1,8 @@
 /**
  * Simple Express server demonstrating Reactive Contracts
  * 
- * Run with: node server.js
+ * Run with: pnpm run server (uses tsx)
+ * Note: Uses tsx to load TypeScript files directly
  */
 
 import express from 'express';
