@@ -67,9 +67,7 @@ describe('implementContract', () => {
       validate: () => false,
     });
 
-    await expect(resolver.execute({ id: '123' })).rejects.toThrow(
-      'Parameter validation failed'
-    );
+    await expect(resolver.execute({ id: '123' })).rejects.toThrow('Parameter validation failed');
   });
 
   it('should call onError handler on error', async () => {
@@ -106,9 +104,7 @@ describe('implementContract', () => {
 
     await resolver.execute({ id: '123' });
 
-    expect(warnSpy).toHaveBeenCalledWith(
-      expect.stringContaining('exceeded latency constraint')
-    );
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('exceeded latency constraint'));
 
     warnSpy.mockRestore();
   });

@@ -8,7 +8,7 @@ import type { UseContractMutationOptions, UseContractMutationResult } from './ty
  * @example
  * ```tsx
  * const [mutate, { loading, error }] = useContractMutation(CreateUserContract);
- * 
+ *
  * const handleSubmit = async () => {
  *   await mutate({ name: 'John', email: 'john@example.com' });
  * };
@@ -19,7 +19,7 @@ export function useContractMutation<TParams = any, TData = any>(
   options: UseContractMutationOptions<TParams, TData> = {}
 ): [
   (params: TParams) => Promise<TData>,
-  Omit<UseContractMutationResult<TParams, TData>, 'mutate'>
+  Omit<UseContractMutationResult<TParams, TData>, 'mutate'>,
 ] {
   const { onSuccess, onError, onSettled } = options;
 

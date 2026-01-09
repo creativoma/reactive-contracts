@@ -1,9 +1,5 @@
 import type { Contract } from '@reactive-contracts/core';
-import type {
-  ContractImplementation,
-  ContractResolver,
-  ResolverContext,
-} from './types.js';
+import type { ContractImplementation, ContractResolver, ResolverContext } from './types.js';
 
 /**
  * Implement a contract resolver on the server side
@@ -37,10 +33,7 @@ export function implementContract<TParams = any, TData = any>(
     throw new Error(`Contract ${contract.definition.name} must have a resolve function`);
   }
 
-  const execute = async (
-    params: TParams,
-    context: ResolverContext = {}
-  ): Promise<TData> => {
+  const execute = async (params: TParams, context: ResolverContext = {}): Promise<TData> => {
     try {
       // Validate params if validator provided
       if (implementation.validate) {

@@ -127,10 +127,7 @@ export function daysAgo(days: number): Date {
  */
 export function isContract(value: unknown): value is Contract {
   return (
-    typeof value === 'object' &&
-    value !== null &&
-    '_brand' in value &&
-    value._brand === 'Contract'
+    typeof value === 'object' && value !== null && '_brand' in value && value._brand === 'Contract'
   );
 }
 

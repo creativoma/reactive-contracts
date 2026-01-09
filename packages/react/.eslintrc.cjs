@@ -15,6 +15,9 @@ module.exports = {
     node: true,
     browser: true,
   },
+  globals: {
+    NodeJS: 'readonly',
+  },
   rules: {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [

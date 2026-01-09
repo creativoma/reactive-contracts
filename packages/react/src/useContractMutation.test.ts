@@ -41,7 +41,7 @@ describe('useContractMutation', () => {
 
   it('should return mutate function and state', () => {
     const [mutate, state] = useContractMutation(testContract);
-    
+
     expect(typeof mutate).toBe('function');
     expect(state).toBeDefined();
     expect(typeof state.reset).toBe('function');

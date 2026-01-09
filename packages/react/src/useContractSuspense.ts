@@ -4,7 +4,7 @@ import { useContract } from './useContract.js';
 
 /**
  * React hook for consuming contracts with Suspense support
- * 
+ *
  * This hook throws a promise while loading, which React Suspense catches
  *
  * @example
@@ -13,10 +13,10 @@ import { useContract } from './useContract.js';
  *   const data = useContractSuspense(UserProfileContract, {
  *     params: { userId }
  *   });
- *   
+ *
  *   return <div>{data.user.name}</div>;
  * }
- * 
+ *
  * // Usage with Suspense
  * <Suspense fallback={<Loading />}>
  *   <UserProfile userId="123" />

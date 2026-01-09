@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { contract, derive, max, fallback, daysAgo, isContract, isDerivedField } from './contract.js';
+import {
+  contract,
+  derive,
+  max,
+  fallback,
+  daysAgo,
+  isContract,
+  isDerivedField,
+} from './contract.js';
 
 describe('contract', () => {
   it('should create a valid contract', () => {

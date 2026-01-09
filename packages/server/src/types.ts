@@ -33,7 +33,7 @@ export interface CacheConfig {
 export interface ContractImplementation<
   TParams = any,
   TData = any,
-  TContext extends ResolverContext = ResolverContext
+  TContext extends ResolverContext = ResolverContext,
 > {
   resolve: ResolverFn<TParams, TData, TContext>;
   cache?: CacheConfig;
