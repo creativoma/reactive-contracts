@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="assets/logo.svg" alt="Reactive Contracts" width="120" />
-</p>
-
-<h1 align="center">Reactive Contracts</h1>
+![Reactive Contracts](public/cover.webp)
 
 <p align="center">
   <strong>Bidirectional API contracts that put frontend in control</strong>
