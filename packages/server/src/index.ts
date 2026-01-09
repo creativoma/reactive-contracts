@@ -7,3 +7,4 @@ export type {
 } from './types.js';
 
 export { implementContract } from './implementContract.js';
+export { createContractHandler, createContractRouter } from './express.js';
