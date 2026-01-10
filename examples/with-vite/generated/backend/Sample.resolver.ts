@@ -31,7 +31,7 @@ export const SampleResolver = implementContract(
   // Import your contract definition here
   {} as Contract, // Replace with your contract
   {
-    async resolve(_params: Record<string, unknown>, _context: ResolverContext): Promise<SampleResolverShape> {
+    async resolve(params: Record<string, unknown>, context: ResolverContext): Promise<SampleResolverShape> {
       // TODO: Implement your data fetching logic here
 
       // Example:

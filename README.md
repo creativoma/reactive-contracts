@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
   <img src="https://img.shields.io/badge/TypeScript-5.4+-blue" alt="TypeScript" />
   <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build" />
-  <img src="https://img.shields.io/badge/tests-34%20passing-brightgreen" alt="Tests" />
+  <img src="https://img.shields.io/badge/tests-45%20passing-brightgreen" alt="Tests" />
 </p>
 
 ---
@@ -82,6 +82,27 @@ npx rcontracts init
 # - contracts/           → Your contract definitions
 # - rcontracts.config.ts → Compiler configuration
 # - generated/           → Auto-generated types and resolvers
+```
+
+### Vite Plugin (Recommended for Vite projects)
+
+```bash
+# For automatic compilation with HMR support
+pnpm add @reactive-contracts/vite-plugin -D
+```
+
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { reactiveContracts } from '@reactive-contracts/vite-plugin';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    reactiveContracts(),  // Compiles on build & HMR on contract changes
+  ],
+});
 ```
 
 ---
@@ -427,7 +448,7 @@ We provide multiple example projects to help you get started:
 |---------|-----------|-------------|
 | [basic-usage](examples/basic-usage) | React + Express | Basic setup with working server |
 | [with-nextjs](examples/with-nextjs) | Next.js 16 | App Router with Client Components |
-| [with-vite](examples/with-vite) | Vite + React | Fast development with HMR |
+| [with-vite](examples/with-vite) | Vite + React | Fast development with HMR + auto-compile plugin |
 | [with-astro](examples/with-astro) | Astro + React Islands | Server-rendered with hydrated components |
 
 Each example includes:
@@ -449,7 +470,7 @@ Each example includes:
 
 ### Upcoming Features
 
-- [ ] Vite plugin for automatic compilation
+- [x] Vite plugin for automatic compilation
 - [ ] Visual contract editor
 - [ ] Real-time SLA dashboard
 - [ ] Automatic resolver generation from Prisma

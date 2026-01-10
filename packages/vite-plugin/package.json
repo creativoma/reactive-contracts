@@ -1,11 +1,8 @@
 {
-  "name": "@reactive-contracts/compiler",
+  "name": "@reactive-contracts/vite-plugin",
   "version": "0.2.0",
-  "description": "Build-time compiler and validator for Reactive Contracts",
+  "description": "Vite plugin for Reactive Contracts - auto-compile contracts with HMR support",
   "type": "module",
-  "bin": {
-    "rcontracts": "./dist/bin/rcontracts.js"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -13,42 +10,44 @@
       "require": "./dist/index.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "!dist/**/*.map",
     "README.md"
   ],
   "scripts": {
-    "build": "tsup && pnpm run copy-templates && pnpm run copy-bin",
-    "copy-templates": "mkdir -p dist/templates && cp -r templates/* dist/templates/",
-    "copy-bin": "mkdir -p dist/bin && cp bin/rcontracts.js dist/bin/",
+    "build": "tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@reactive-contracts/compiler": "workspace:*",
     "@reactive-contracts/core": "workspace:*",
-    "commander": "^14.0.2",
-    "fs-extra": "^11.3.3",
-    "glob": "^13.0.0",
-    "jiti": "^2.4.2",
-    "ora": "^9.0.0",
-    "picocolors": "^1.1.1",
-    "zod": "^4.3.5"
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.6",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
+    "vite": "^7.3.1",
     "vitest": "^4.0.16"
   },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
   "keywords": [
+    "vite",
+    "vite-plugin",
+    "reactive-contracts",
     "contracts",
     "api",
     "typescript",
-    "compiler",
-    "validation"
+    "hmr"
   ],
   "author": "Reactive Contracts Contributors",
   "license": "MIT",
@@ -56,9 +55,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/creativoma/reactive-contracts.git",
-    "directory": "packages/compiler"
+    "directory": "packages/vite-plugin"
   },
-  "publishConfig": {
-    "access": "public"
+  "bugs": {
+    "url": "https://github.com/creativoma/reactive-contracts/issues"
   }
 }
