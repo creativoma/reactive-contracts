@@ -134,7 +134,7 @@ export function isContract(value: unknown): value is Contract {
 /**
  * Type guard to check if a value is a DerivedField
  */
-export function isDerivedField(value: unknown): value is DerivedField<any, any> {
+export function isDerivedField(value: unknown): value is DerivedField<DerivationContext, unknown> {
   return (
     typeof value === 'object' &&
     value !== null &&

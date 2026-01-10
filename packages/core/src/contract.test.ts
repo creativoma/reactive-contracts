@@ -54,6 +54,7 @@ describe('contract', () => {
       contract({
         name: 'Test',
         intent: 'Test intent',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         shape: null as any,
       })
     ).toThrow('Contract must have a valid shape definition');

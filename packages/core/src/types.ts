@@ -14,7 +14,9 @@ export type URLType = `URL<${string}>` | 'URL';
 
 /**
  * Type definition that can be a primitive, URL, or nested object
+ * Uses any for DerivedField to allow specific type definitions in contracts
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TypeDefinition = PrimitiveType | URLType | ShapeDefinition | DerivedField<any, any>;
 
 /**
@@ -25,11 +27,10 @@ export interface ShapeDefinition {
 }
 
 /**
- * Context passed to derived field functions
+ * Base context type for derived field functions
+ * Can be extended with specific properties
  */
-export interface DerivationContext {
-  [key: string]: any;
-}
+export type DerivationContext = Record<string, unknown>;
 
 /**
  * Derived field definition
@@ -103,7 +104,9 @@ export interface ReactivityConfig {
 /**
  * Migration function for contract versioning
  */
-export type MigrationFn = (oldData: any) => any;
+export type MigrationFn<TFrom = Record<string, unknown>, TTo = Record<string, unknown>> = (
+  oldData: TFrom
+) => TTo;
 
 /**
  * Versioning configuration
