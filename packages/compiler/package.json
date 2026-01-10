@@ -19,8 +19,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsup && pnpm run copy-templates",
+    "build": "tsup && pnpm run copy-templates && pnpm run copy-bin",
     "copy-templates": "mkdir -p dist/templates && cp -r templates/* dist/templates/",
+    "copy-bin": "mkdir -p dist/bin && cp bin/rcontracts.js dist/bin/",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"

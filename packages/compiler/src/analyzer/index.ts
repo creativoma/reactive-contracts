@@ -1,4 +1,4 @@
-import type { Contract } from '@reactive-contracts/core';
+import type { Contract, ShapeDefinition, TypeDefinition } from '@reactive-contracts/core';
 import type { LatencyAnalysisResult } from '../types.js';
 
 /**
@@ -150,7 +150,9 @@ function analyzeLatencyRequirement(latencyMs: number): {
 /**
  * Check if shape contains complex derived fields
  */
-function hasComplexDerivations(shape: any): boolean {
+function hasComplexDerivations(
+  shape: ShapeDefinition | TypeDefinition | null | undefined
+): boolean {
   if (!shape || typeof shape !== 'object') {
     return false;
   }

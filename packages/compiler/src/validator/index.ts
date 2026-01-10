@@ -1,4 +1,12 @@
-import type { Contract, ShapeDefinition, TypeDefinition } from '@reactive-contracts/core';
+import type {
+  Contract,
+  ShapeDefinition,
+  TypeDefinition,
+  DerivedField,
+  ContractConstraints,
+  ReactivityConfig,
+  VersioningConfig,
+} from '@reactive-contracts/core';
 import type { ValidationResult } from '../types.js';
 
 /**
@@ -134,7 +142,12 @@ function validateTypeDefinition(
   } else if (typeof type === 'object' && type !== null) {
     // Check if it's a DerivedField
     if ('_brand' in type && type._brand === 'DerivedField') {
-      validateDerivedField(type as any, path, errors, warnings);
+      validateDerivedField(
+        type as DerivedField<Record<string, unknown>, unknown>,
+        path,
+        errors,
+        warnings
+      );
     } else {
       // Nested shape
       validateShape(type as ShapeDefinition, path, errors, warnings);
@@ -148,7 +161,7 @@ function validateTypeDefinition(
  * Validate derived field
  */
 function validateDerivedField(
-  field: any,
+  field: DerivedField<Record<string, unknown>, unknown>,
   path: string,
   errors: string[],
   _warnings: string[]
@@ -177,7 +190,11 @@ function validateDerivedField(
 /**
  * Validate contract constraints
  */
-function validateConstraints(constraints: any, errors: string[], _warnings: string[]): void {
+function validateConstraints(
+  constraints: ContractConstraints,
+  errors: string[],
+  _warnings: string[]
+): void {
   // Validate latency constraint
   if (constraints.latency) {
     const { max, fallback } = constraints.latency;
@@ -235,7 +252,7 @@ function validateConstraints(constraints: any, errors: string[], _warnings: stri
  * Validate reactivity configuration
  */
 function validateReactivity(
-  reactivity: any,
+  reactivity: ReactivityConfig,
   shape: ShapeDefinition,
   errors: string[],
   warnings: string[]
@@ -321,7 +338,11 @@ function validateReactivity(
 /**
  * Validate versioning configuration
  */
-function validateVersioning(versioning: any, errors: string[], warnings: string[]): void {
+function validateVersioning(
+  versioning: VersioningConfig,
+  errors: string[],
+  warnings: string[]
+): void {
   if (!versioning.version || typeof versioning.version !== 'string') {
     errors.push('Versioning must have a version string');
   } else if (!/^\d+\.\d+\.\d+$/.test(versioning.version)) {

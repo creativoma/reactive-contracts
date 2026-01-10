@@ -27,7 +27,7 @@ ${typeDefinitions}
  */
 export interface ${typeName}Params {
   // Add your params here based on contract requirements
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 /**
@@ -79,6 +79,7 @@ export async function generateBackendResolver(
 
 import { implementContract } from '@reactive-contracts/server';
 import type { Contract } from '@reactive-contracts/core';
+import type { ResolverContext } from '@reactive-contracts/server';
 
 ${shapeType}
 
@@ -92,7 +93,7 @@ export const ${typeName}Resolver = implementContract(
   // Import your contract definition here
   {} as Contract, // Replace with your contract
   {
-    async resolve(params: { [key: string]: any }, context: any): Promise<${typeName}ResolverShape> {
+    async resolve(params: Record<string, unknown>, context: ResolverContext): Promise<${typeName}ResolverShape> {
       // TODO: Implement your data fetching logic here
 
       // Example:

@@ -58,7 +58,7 @@ export async function validate(): Promise<void> {
             typeof value === 'object' &&
             value !== null &&
             '_brand' in value &&
-            (value as any)._brand === 'Contract'
+            (value as { _brand: string })._brand === 'Contract'
         );
 
         if (contractExports.length === 0) {

@@ -28,7 +28,7 @@ export const compilerConfigSchema = z.object({
     })
     .optional(),
 
-  integrations: z.record(z.string(), z.any()).optional().describe('External integrations'),
+  integrations: z.record(z.string(), z.unknown()).optional().describe('External integrations'),
 });
 
 export type CompilerConfigSchema = z.infer<typeof compilerConfigSchema>;

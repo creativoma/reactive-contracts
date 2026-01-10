@@ -20,7 +20,7 @@ export interface CompilerConfig {
     treeShaking?: boolean;
     precompute?: string[];
   };
-  integrations?: Record<string, any>;
+  integrations?: Record<string, unknown>;
 }
 
 /**
