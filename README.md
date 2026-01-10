@@ -213,7 +213,7 @@ A contract is a **bidirectional agreement** between frontend and backend:
 
 ```
 ┌─────────────┐     Contract      ┌─────────────┐
-│   Frontend  │ ◄──────────────► │   Backend   │
+│   Frontend  │ ◄──────────────►  │   Backend   │
 │  (Consumer) │   Shape, Latency  │  (Provider) │
 │             │   Reactivity      │             │
 └─────────────┘                   └─────────────┘
@@ -396,24 +396,24 @@ export default defineConfig({
 ┌────────────────────────────────────────────────────────────────┐
 │                        Build Time                              │
 ├────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐     │
-│  │   Contract   │───▶│   Compiler   │───▶│  Generated   │     │
-│  │ Definitions  │    │  & Validator │    │    Code      │     │
-│  └──────────────┘    └──────────────┘    └──────────────┘     │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+│  │   Contract   │───▶│   Compiler   │───▶│  Generated   │      │
+│  │ Definitions  │    │  & Validator │    │    Code      │      │
+│  └──────────────┘    └──────────────┘    └──────────────┘      │
 └────────────────────────────────────────────────────────────────┘
                                │
                                ▼
 ┌────────────────────────────────────────────────────────────────┐
 │                        Runtime                                 │
 ├────────────────────────────────────────────────────────────────┤
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐     │
-│  │   Frontend   │◄──▶│  Negotiator  │◄──▶│   Backend    │     │
-│  │    Client    │    │   (Edge)     │    │   Resolver   │     │
-│  └──────────────┘    └──────────────┘    └──────────────┘     │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+│  │   Frontend   │◄──▶│  Negotiator  │◄──▶│   Backend    │      │
+│  │    Client    │    │   (Edge)     │    │   Resolver   │      │
+│  └──────────────┘    └──────────────┘    └──────────────┘      │
 │         │                   │                   │              │
 │         ▼                   ▼                   ▼              │
-│    Types, Hooks      SLA Monitoring      Query Execution      │
-│    Loading States    Fallback Logic      Caching Layer        │
+│    Types, Hooks      SLA Monitoring      Query Execution       │
+│    Loading States    Fallback Logic      Caching Layer         │
 └────────────────────────────────────────────────────────────────┘
 ```
 
