@@ -28,13 +28,13 @@ export const CodeBlock = ({
 
   if (inline) {
     return (
-      <Card className="p-4 bg-white/3 border-white/20 group relative">
-        <div className="flex items-center gap-3 text-sm font-mono">
-          {icon}
-          <code className="text-white flex-1">{code}</code>
+      <Card className="p-4 bg-white/3 border-white/20 group relative overflow-hidden">
+        <div className="flex items-center gap-3 text-sm font-mono overflow-x-auto">
+          {icon && <span className="shrink-0">{icon}</span>}
+          <code className="text-white">{code}</code>
           <button
             onClick={handleCopy}
-            className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/10 rounded"
+            className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/10 rounded"
             aria-label="Copy to clipboard"
           >
             {copied ? (
