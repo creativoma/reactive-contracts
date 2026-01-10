@@ -57,7 +57,7 @@ export async function executeContract<TData>(
 
   try {
     const url = `${config.baseUrl}/${contract.definition.name}`;
-    
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), config.timeout);
 
@@ -137,7 +137,7 @@ function evaluateLatencyStatus(
   reportedLatency?: number
 ): 'normal' | 'degraded' | 'violated' {
   const latencyConstraint = contract.definition.constraints?.latency;
-  
+
   if (!latencyConstraint) {
     return 'normal';
   }

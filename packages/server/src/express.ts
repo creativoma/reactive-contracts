@@ -11,7 +11,7 @@ export function createContractHandler<TParams, TData>(
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const startTime = Date.now();
-      
+
       // Extract params from request body
       const { params = {}, contract: contractName } = req.body;
 
@@ -35,10 +35,7 @@ export function createContractHandler<TParams, TData>(
       const executionTime = Date.now() - startTime;
 
       // Evaluate latency status
-      const latencyStatus = evaluateLatencyStatus(
-        resolver.contract,
-        executionTime
-      );
+      const latencyStatus = evaluateLatencyStatus(resolver.contract, executionTime);
 
       // Send response
       res.json({

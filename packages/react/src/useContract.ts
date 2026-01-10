@@ -37,7 +37,14 @@ export function useContract<TData = any>(
   contract: Contract,
   options: UseContractOptions = {}
 ): UseContractResult<TData> {
-  const { params, enabled = true, refetchInterval, onSuccess, onError, useMockData = false } = options;
+  const {
+    params,
+    enabled = true,
+    refetchInterval,
+    onSuccess,
+    onError,
+    useMockData = false,
+  } = options;
 
   const [data, setData] = useState<TData | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
@@ -57,7 +64,8 @@ export function useContract<TData = any>(
 
       // Check cache first
       const cached = contractCache.get(cacheKey);
-      if (cached && Date.now() - cached.timestamp < 60000) { // 1 minute cache
+      if (cached && Date.now() - cached.timestamp < 60000) {
+        // 1 minute cache
         setData(cached.data);
         setContractStatus(cached.status);
         setLoading(false);
@@ -66,7 +74,7 @@ export function useContract<TData = any>(
       }
 
       let result;
-      
+
       // Use real HTTP if configured, otherwise fallback to mock
       if (useMockData) {
         // Mock data mode for testing
