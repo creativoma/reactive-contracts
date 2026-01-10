@@ -7,7 +7,7 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["example-basic-usage", "with-astro", "with-nextjs", "with-vite"],
+  "ignore": ["basic-usage", "with-astro", "with-nextjs", "with-vite"],
   "privatePackages": {
     "version": false,
     "tag": false
