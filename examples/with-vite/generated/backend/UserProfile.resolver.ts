@@ -39,7 +39,7 @@ export const UserProfileResolver = implementContract(
   // Import your contract definition here
   {} as Contract, // Replace with your contract
   {
-    async resolve(_params: Record<string, unknown>, _context: ResolverContext): Promise<UserProfileResolverShape> {
+    async resolve(params: Record<string, unknown>, context: ResolverContext): Promise<UserProfileResolverShape> {
       // TODO: Implement your data fetching logic here
 
       // Example:

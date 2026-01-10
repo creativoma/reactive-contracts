@@ -30,7 +30,7 @@ export const PostsResolver = implementContract(
   // Import your contract definition here
   {} as Contract, // Replace with your contract
   {
-    async resolve(_params: Record<string, unknown>, _context: ResolverContext): Promise<PostsResolverShape> {
+    async resolve(params: Record<string, unknown>, context: ResolverContext): Promise<PostsResolverShape> {
       // TODO: Implement your data fetching logic here
 
       // Example:

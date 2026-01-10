@@ -17,6 +17,7 @@
     "@reactive-contracts/core": "workspace:*",
     "@reactive-contracts/react": "workspace:*",
     "@reactive-contracts/server": "workspace:*",
+    "@reactive-contracts/vite-plugin": "workspace:*",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
