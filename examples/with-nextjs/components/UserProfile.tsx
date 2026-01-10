@@ -3,6 +3,7 @@
 import { useContract } from '@reactive-contracts/react';
 import { UserProfileContract } from '../contracts/user-profile.contract';
 import type { UserProfileShape } from '../generated/frontend/UserProfile';
+import Image from 'next/image';
 
 interface UserProfileProps {
   userId: string;
@@ -71,8 +72,8 @@ export function UserProfile({ userId }: UserProfileProps) {
 
       {/* Header del perfil */}
       <div className="flex gap-6 items-start">
-        <div className="relative flex-shrink-0">
-          <img
+        <div className="relative shrink-0">
+          <Image
             src={data.user.avatar}
             alt={data.user.name}
             className="w-28 h-28 rounded-full object-cover border-3 border-zinc-700"

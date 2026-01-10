@@ -2,6 +2,7 @@
 
 import { useContract } from '@reactive-contracts/react';
 import { PostsContract } from '../contracts/posts.contract';
+import Image from 'next/image';
 
 interface PostsListProps {
   page?: number;
@@ -108,7 +109,7 @@ function PostCard({ post }: PostCardProps) {
   return (
     <article className="bg-zinc-900 rounded-lg p-5 border border-zinc-800 hover:border-violet-500 transition-colors">
       <div className="flex items-center gap-3 mb-3">
-        <img
+        <Image
           src={post.author.avatar}
           alt={post.author.name}
           className="w-10 h-10 rounded-full object-cover"
