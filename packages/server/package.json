@@ -1,6 +1,6 @@
 {
   "name": "@reactive-contracts/server",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "Server-side implementation utilities for Reactive Contracts",
   "keywords": [
     "contracts",
@@ -32,6 +32,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
+    "!dist/**/*.map",
     "README.md"
   ],
   "scripts": {

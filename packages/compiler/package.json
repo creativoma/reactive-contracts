@@ -1,6 +1,6 @@
 {
   "name": "@reactive-contracts/compiler",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "Build-time compiler and validator for Reactive Contracts",
   "type": "module",
   "bin": {
@@ -15,7 +15,7 @@
   },
   "files": [
     "dist",
-    "templates",
+    "!dist/**/*.map",
     "README.md"
   ],
   "scripts": {
