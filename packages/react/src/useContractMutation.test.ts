@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { contract } from '@reactive-contracts/core';
 import { useContractMutation } from './useContractMutation.js';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Mock React hooks for testing
 let mockState: any = {};
 let mockSetState: any = {};

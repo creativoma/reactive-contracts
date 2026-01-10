@@ -48,9 +48,9 @@ export function getClientConfig(): ContractClientConfig {
 /**
  * Execute a contract via HTTP
  */
-export async function executeContract<TData>(
+export async function executeContract<TParams, TData>(
   contract: Contract,
-  params?: any
+  params?: TParams
 ): Promise<ContractResponse<TData>> {
   const config = getClientConfig();
   const startTime = Date.now();
@@ -81,7 +81,7 @@ export async function executeContract<TData>(
       throw new Error(`Contract execution failed: ${response.status} ${response.statusText}`);
     }
 
-    const result = (await response.json()) as any;
+    const result = (await response.json()) as ContractResponse<TData>;
     const executionTime = Date.now() - startTime;
 
     // Evaluate latency status

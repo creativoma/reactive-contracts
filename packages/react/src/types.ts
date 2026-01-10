@@ -1,14 +1,14 @@
 import type { ContractStatus } from '@reactive-contracts/core';
 
 /**
- * Options for useContract hook
+ * Options for useContract hook - requires explicit type parameter for params
  */
-export interface UseContractOptions<TParams = any> {
+export interface UseContractOptions<TParams, TData> {
   params?: TParams;
   enabled?: boolean;
   refetchInterval?: number;
   useMockData?: boolean; // If true, uses mock data instead of HTTP
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: TData) => void;
   onError?: (error: Error) => void;
 }
 
@@ -26,7 +26,7 @@ export interface UseContractResult<TData> {
 /**
  * Options for useContractMutation hook
  */
-export interface UseContractMutationOptions<_TParams = any, TData = any> {
+export interface UseContractMutationOptions<TData> {
   onSuccess?: (data: TData) => void;
   onError?: (error: Error) => void;
   onSettled?: () => void;
@@ -44,18 +44,18 @@ export interface UseContractMutationResult<TParams, TData> {
 }
 
 /**
- * Contract cache entry
+ * Contract cache entry - fully typed
  */
-export interface ContractCacheEntry<TData> {
+export interface ContractCacheEntry<TParams, TData> {
   data: TData;
   status: ContractStatus;
   timestamp: number;
-  params: any;
+  params: TParams;
 }
 
 /**
  * Prefetch options
  */
-export interface PrefetchOptions<TParams = any> {
+export interface PrefetchOptions<TParams> {
   params?: TParams;
 }

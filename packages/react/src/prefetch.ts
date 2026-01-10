@@ -1,13 +1,13 @@
 import type { Contract } from '@reactive-contracts/core';
 import type { PrefetchOptions } from './types.js';
 
-// Cache for prefetched data
-const prefetchCache = new Map<string, any>();
+// Cache for prefetched data - generic storage
+const prefetchCache = new Map<string, Record<string, unknown>>();
 
 /**
  * Generate a cache key for prefetching
  */
-function getPrefetchKey(contract: Contract, params?: any): string {
+function getPrefetchKey<TParams>(contract: Contract, params?: TParams): string {
   const paramsKey = params ? JSON.stringify(params) : '';
   return `${contract.definition.name}:${paramsKey}`;
 }
@@ -19,16 +19,16 @@ function getPrefetchKey(contract: Contract, params?: any): string {
  * ```tsx
  * // Prefetch on hover
  * <button
- *   onMouseEnter={() => prefetchContract(UserProfileContract, { params: { userId: '123' } })}
+ *   onMouseEnter={() => prefetchContract<{ userId: string }>(UserProfileContract, { params: { userId: '123' } })}
  *   onClick={() => navigate('/user/123')}
  * >
  *   View Profile
  * </button>
  * ```
  */
-export async function prefetchContract<TParams = any>(
+export async function prefetchContract<TParams>(
   contract: Contract,
-  options: PrefetchOptions<TParams> = {}
+  options: PrefetchOptions<TParams> = {} as PrefetchOptions<TParams>
 ): Promise<void> {
   const { params } = options;
   const cacheKey = getPrefetchKey(contract, params);
@@ -66,15 +66,19 @@ export async function prefetchContract<TParams = any>(
  * Get prefetched data from cache
  * @internal
  */
-export function getPrefetchedData(contract: Contract, params?: any): any | null {
+export function getPrefetchedData<TParams, TData>(
+  contract: Contract,
+  params?: TParams
+): TData | null {
   const cacheKey = getPrefetchKey(contract, params);
-  return prefetchCache.get(cacheKey) || null;
+  const cached = prefetchCache.get(cacheKey);
+  return cached ? (cached as unknown as TData) : null;
 }
 
 /**
  * Clear prefetch cache for a specific contract or all contracts
  */
-export function clearPrefetchCache(contract?: Contract, params?: any): void {
+export function clearPrefetchCache<TParams>(contract?: Contract, params?: TParams): void {
   if (contract) {
     const cacheKey = getPrefetchKey(contract, params);
     prefetchCache.delete(cacheKey);

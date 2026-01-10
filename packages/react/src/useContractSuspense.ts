@@ -10,9 +10,10 @@ import { useContract } from './useContract.js';
  * @example
  * ```tsx
  * function UserProfile({ userId }: { userId: string }) {
- *   const data = useContractSuspense(UserProfileContract, {
- *     params: { userId }
- *   });
+ *   const data = useContractSuspense<{ userId: string }, UserProfileData>(
+ *     UserProfileContract,
+ *     { params: { userId } }
+ *   );
  *
  *   return <div>{data.user.name}</div>;
  * }
@@ -23,11 +24,11 @@ import { useContract } from './useContract.js';
  * </Suspense>
  * ```
  */
-export function useContractSuspense<TData = any>(
+export function useContractSuspense<TParams, TData>(
   contract: Contract,
-  options: UseContractOptions = {}
+  options: UseContractOptions<TParams, TData> = {} as UseContractOptions<TParams, TData>
 ): TData {
-  const { data, loading, error } = useContract<TData>(contract, options);
+  const { data, loading, error } = useContract<TParams, TData>(contract, options);
 
   if (error) {
     throw error;

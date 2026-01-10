@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { Contract, ContractStatus } from '@reactive-contracts/core';
-import type { UseContractOptions, UseContractResult } from './types.js';
+import type { UseContractOptions, UseContractResult, ContractCacheEntry } from './types.js';
 import { executeContract } from './client.js';
 
-// Simple in-memory cache
-const contractCache = new Map<string, any>();
+// Simple in-memory cache - uses generic cache entry
+const contractCache = new Map<string, ContractCacheEntry<unknown, unknown>>();
 
 /**
  * Generate a cache key for a contract with params
  */
-function getCacheKey(contract: Contract, params?: any): string {
+function getCacheKey<TParams>(contract: Contract, params?: TParams): string {
   const paramsKey = params ? JSON.stringify(params) : '';
   return `${contract.definition.name}:${paramsKey}`;
 }
@@ -28,14 +28,17 @@ const defaultContractStatus: ContractStatus = {
  *
  * @example
  * ```tsx
- * const { data, loading, contractStatus } = useContract(UserProfileContract, {
+ * const { data, loading, contractStatus } = useContract<
+ *   { userId: string },
+ *   UserProfileData
+ * >(UserProfileContract, {
  *   params: { userId: '123' }
  * });
  * ```
  */
-export function useContract<TData = any>(
+export function useContract<TParams, TData>(
   contract: Contract,
-  options: UseContractOptions = {}
+  options: UseContractOptions<TParams, TData> = {} as UseContractOptions<TParams, TData>
 ): UseContractResult<TData> {
   const {
     params,
@@ -66,10 +69,10 @@ export function useContract<TData = any>(
       const cached = contractCache.get(cacheKey);
       if (cached && Date.now() - cached.timestamp < 60000) {
         // 1 minute cache
-        setData(cached.data);
+        setData(cached.data as TData);
         setContractStatus(cached.status);
         setLoading(false);
-        onSuccess?.(cached.data);
+        onSuccess?.(cached.data as TData);
         return;
       }
 
@@ -92,7 +95,7 @@ export function useContract<TData = any>(
       } else {
         // Try real HTTP execution
         try {
-          result = await executeContract<TData>(contract, params);
+          result = await executeContract<TParams, TData>(contract, params);
         } catch (err) {
           // If HTTP fails, fallback to mock data in development
           if (process.env.NODE_ENV === 'development') {
@@ -117,17 +120,17 @@ export function useContract<TData = any>(
         }
       }
 
-      const cacheEntry = {
-        data: result.data,
+      const cacheEntry: ContractCacheEntry<TParams, TData> = {
+        data: result.data as TData,
         status: result.status,
         timestamp: Date.now(),
-        params,
+        params: params as TParams,
       };
 
-      contractCache.set(cacheKey, cacheEntry);
-      setData(result.data);
+      contractCache.set(cacheKey, cacheEntry as ContractCacheEntry<unknown, unknown>);
+      setData(result.data as TData);
       setContractStatus(result.status);
-      onSuccess?.(result.data);
+      onSuccess?.(result.data as TData);
     } catch (err) {
       const errorObj = err instanceof Error ? err : new Error('Unknown error');
       setError(errorObj);
@@ -173,8 +176,8 @@ export function useContract<TData = any>(
  * Create mock data based on contract shape
  * This is a placeholder - in real implementation, data comes from backend
  */
-function createMockData(contract: Contract): any {
-  const mockData: any = {};
+function createMockData(contract: Contract): Record<string, unknown> {
+  const mockData: Record<string, unknown> = {};
 
   for (const [key, type] of Object.entries(contract.definition.shape)) {
     if (typeof type === 'string') {
@@ -203,31 +206,32 @@ function createMockData(contract: Contract): any {
       mockData[key] = null; // Derived fields are computed
     } else if (typeof type === 'object') {
       // Nested object
-      mockData[key] = {};
+      const nestedMockData: Record<string, unknown> = {};
       for (const [nestedKey, nestedType] of Object.entries(type)) {
         if (typeof nestedType === 'string') {
           switch (nestedType) {
             case 'string':
-              mockData[key][nestedKey] = `mock-${nestedKey}`;
+              nestedMockData[nestedKey] = `mock-${nestedKey}`;
               break;
             case 'number':
-              mockData[key][nestedKey] = 42;
+              nestedMockData[nestedKey] = 42;
               break;
             case 'boolean':
-              mockData[key][nestedKey] = true;
+              nestedMockData[nestedKey] = true;
               break;
             case 'Date':
-              mockData[key][nestedKey] = new Date();
+              nestedMockData[nestedKey] = new Date();
               break;
             default:
               if (typeof nestedType === 'string' && nestedType.startsWith('URL')) {
-                mockData[key][nestedKey] = 'https://example.com/mock.jpg';
+                nestedMockData[nestedKey] = 'https://example.com/mock.jpg';
               } else {
-                mockData[key][nestedKey] = null;
+                nestedMockData[nestedKey] = null;
               }
           }
         }
       }
+      mockData[key] = nestedMockData;
     }
   }
 

@@ -7,16 +7,19 @@ import type { UseContractMutationOptions, UseContractMutationResult } from './ty
  *
  * @example
  * ```tsx
- * const [mutate, { loading, error }] = useContractMutation(CreateUserContract);
+ * const [mutate, { loading, error }] = useContractMutation<
+ *   { name: string; email: string },
+ *   { id: string }
+ * >(CreateUserContract);
  *
  * const handleSubmit = async () => {
  *   await mutate({ name: 'John', email: 'john@example.com' });
  * };
  * ```
  */
-export function useContractMutation<TParams = any, TData = any>(
+export function useContractMutation<TParams, TData>(
   contract: Contract,
-  options: UseContractMutationOptions<TParams, TData> = {}
+  options: UseContractMutationOptions<TData> = {} as UseContractMutationOptions<TData>
 ): [
   (params: TParams) => Promise<TData>,
   Omit<UseContractMutationResult<TParams, TData>, 'mutate'>,
