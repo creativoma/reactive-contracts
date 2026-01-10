@@ -6,7 +6,10 @@ import type { ContractImplementation, ContractResolver, ResolverContext } from '
  *
  * @example
  * ```typescript
- * const UserProfileResolver = implementContract(UserProfileContract, {
+ * const UserProfileResolver = implementContract<
+ *   { userId: string },
+ *   { user: { id: string; name: string } }
+ * >(UserProfileContract, {
  *   async resolve({ userId }, context) {
  *     const user = await db.users.findById(userId);
  *     return {
@@ -24,7 +27,7 @@ import type { ContractImplementation, ContractResolver, ResolverContext } from '
  * });
  * ```
  */
-export function implementContract<TParams = any, TData = any>(
+export function implementContract<TParams, TData>(
   contract: Contract,
   implementation: ContractImplementation<TParams, TData>
 ): ContractResolver<TParams, TData> {

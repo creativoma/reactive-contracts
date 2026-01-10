@@ -40,6 +40,7 @@ describe('implementContract', () => {
   it('should throw error if resolve function not provided', () => {
     expect(() =>
       implementContract(testContract, {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         resolve: null as any,
       })
     ).toThrow('must have a resolve function');

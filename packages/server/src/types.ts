@@ -1,17 +1,18 @@
 import type { Contract } from '@reactive-contracts/core';
 
 /**
- * Context passed to resolver functions
+ * Base context passed to resolver functions
+ * Extend this interface for custom context properties
  */
 export interface ResolverContext {
   request?: Request;
   headers?: Record<string, string>;
-  user?: any;
-  [key: string]: any;
+  user?: Record<string, unknown>;
+  [key: string]: unknown;
 }
 
 /**
- * Resolver function type
+ * Resolver function type - fully generic
  */
 export type ResolverFn<TParams, TData, TContext extends ResolverContext = ResolverContext> = (
   params: TParams,
@@ -21,30 +22,30 @@ export type ResolverFn<TParams, TData, TContext extends ResolverContext = Resolv
 /**
  * Cache configuration for contract resolvers
  */
-export interface CacheConfig {
+export interface CacheConfig<TParams> {
   ttl?: string;
   staleWhileRevalidate?: string;
-  tags?: (params: any) => string[];
+  tags?: (params: TParams) => string[];
 }
 
 /**
- * Contract implementation configuration
+ * Contract implementation configuration - requires explicit type parameters
  */
 export interface ContractImplementation<
-  TParams = any,
-  TData = any,
+  TParams,
+  TData,
   TContext extends ResolverContext = ResolverContext,
 > {
   resolve: ResolverFn<TParams, TData, TContext>;
-  cache?: CacheConfig;
+  cache?: CacheConfig<TParams>;
   validate?: (params: TParams) => boolean | Promise<boolean>;
   onError?: (error: Error, params: TParams, context: TContext) => void;
 }
 
 /**
- * Implemented contract resolver
+ * Implemented contract resolver - requires explicit type parameters
  */
-export interface ContractResolver<TParams = any, TData = any> {
+export interface ContractResolver<TParams, TData> {
   contract: Contract;
   implementation: ContractImplementation<TParams, TData>;
   execute: (params: TParams, context?: ResolverContext) => Promise<TData>;

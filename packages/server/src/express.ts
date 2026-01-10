@@ -26,9 +26,14 @@ export function createContractHandler<TParams, TData>(
       }
 
       // Execute the contract
+      const reqWithUser = req as unknown as Record<string, unknown>;
+      const userValue = reqWithUser.user;
       const result = await resolver.execute(params, {
-        user: (req as any).user, // If using auth middleware
-        headers: req.headers as any,
+        user:
+          typeof userValue === 'object' && userValue !== null
+            ? (userValue as Record<string, unknown>)
+            : undefined, // If using auth middleware
+        headers: req.headers as Record<string, string>,
         ip: req.ip,
       });
 
@@ -59,10 +64,11 @@ export function createContractHandler<TParams, TData>(
 
 /**
  * Create an Express router for multiple contract resolvers
+ * Uses Record with generic resolver type for flexibility
  */
-export function createContractRouter(
-  resolvers: Record<string, ContractResolver<any, any>>
-): (req: Request, res: Response, next: NextFunction) => Promise<void> {
+export function createContractRouter<
+  TResolvers extends Record<string, ContractResolver<unknown, unknown>>,
+>(resolvers: TResolvers): (req: Request, res: Response, next: NextFunction) => Promise<void> {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       // Extract contract name from URL or body
