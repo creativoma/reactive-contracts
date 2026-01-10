@@ -7,12 +7,32 @@ interface UserProfileProps {
 }
 
 /**
+ * Type for UserProfile data based on contract shape
+ */
+interface UserProfileData {
+  user: {
+    id: string;
+    name: string;
+    avatar: string;
+    joinedAt: Date;
+  };
+  activity: {
+    postsCount: number;
+    lastActive: Date;
+    status: 'active' | 'inactive';
+  };
+}
+
+/**
  * User Profile Component
  *
  * Demonstrates using a contract in a React component
  */
 export function UserProfile({ userId }: UserProfileProps) {
-  const { data, loading, error, contractStatus, refetch } = useContract(UserProfileContract, {
+  const { data, loading, error, contractStatus, refetch } = useContract<
+    { userId: string },
+    UserProfileData
+  >(UserProfileContract, {
     params: { userId },
   });
 
@@ -38,13 +58,18 @@ export function UserProfile({ userId }: UserProfileProps) {
   }
 
   // Show degraded state when using cached data
-  if (contractStatus.latency === 'degraded') {
+  if (contractStatus.latency === 'degraded' && data) {
     return (
       <div className="user-profile user-profile-degraded">
         <div className="degraded-notice">⚠️ Using cached data due to slow response</div>
         <UserProfileContent data={data} />
       </div>
     );
+  }
+
+  // No data available yet
+  if (!data) {
+    return null;
   }
 
   // Normal state
@@ -62,7 +87,7 @@ export function UserProfile({ userId }: UserProfileProps) {
   );
 }
 
-function UserProfileContent({ data }: { data: any }) {
+function UserProfileContent({ data }: { data: UserProfileData }) {
   return (
     <>
       <img

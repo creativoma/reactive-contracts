@@ -30,7 +30,13 @@ const db = {
  *
  * Implements the backend logic for the UserProfileContract
  */
-export const UserProfileResolver = implementContract(UserProfileContract, {
+export const UserProfileResolver = implementContract<
+  { userId: string },
+  {
+    user: { id: string; name: string; avatar: string; joinedAt: Date };
+    activity: { postsCount: number; lastActive: Date };
+  }
+>(UserProfileContract, {
   async resolve({ userId }, context) {
     // Fetch user data
     const user = await db.users.findById(userId);
@@ -56,7 +62,7 @@ export const UserProfileResolver = implementContract(UserProfileContract, {
   },
 
   // Validation function (optional)
-  validate: (params) => {
+  validate: (params: { userId: string }) => {
     return typeof params.userId === 'string' && params.userId.length > 0;
   },
 
@@ -64,11 +70,11 @@ export const UserProfileResolver = implementContract(UserProfileContract, {
   cache: {
     ttl: '5m', // Cache for 5 minutes
     staleWhileRevalidate: '1h', // Serve stale data while revalidating for up to 1 hour
-    tags: (params) => [`user:${params.userId}`], // Cache tags for invalidation
+    tags: (params: { userId: string }) => [`user:${params.userId}`], // Cache tags for invalidation
   },
 
   // Error handler (optional)
-  onError: (error, params, context) => {
+  onError: (error, params: { userId: string }, context) => {
     console.error('UserProfile resolver error:', {
       error: error.message,
       userId: params.userId,

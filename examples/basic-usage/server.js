@@ -1,6 +1,6 @@
 /**
  * Simple Express server demonstrating Reactive Contracts
- * 
+ *
  * Run with: pnpm run server (uses tsx)
  * Note: Uses tsx to load TypeScript files directly
  */
@@ -10,6 +10,7 @@ import cors from 'cors';
 import { implementContract, createContractRouter } from '@reactive-contracts/server';
 import { UserProfileContract } from './contracts/user-profile.contract.ts';
 
+/** @type {import('express').Express} */
 const app = express();
 const PORT = 3001;
 
