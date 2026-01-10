@@ -30,8 +30,8 @@ const comparisons = [
         >
           tRPC
         </a>{' '}
-        shares types but doesn't validate constraints (latency, freshness) or support declarative
-        reactivity at build time.
+        shares types but doesn&apos;t validate constraints (latency, freshness) or support
+        declarative reactivity at build time.
       </>
     ),
   },
@@ -47,8 +47,8 @@ const comparisons = [
         >
           OpenAPI
         </a>{' '}
-        documents what exists. Reactive Contracts enforce what's required—and fail builds when
-        requirements can't be met.
+        documents what exists. Reactive Contracts enforce what&apos;s required—and fail builds when
+        requirements can&apos;t be met.
       </>
     ),
   },

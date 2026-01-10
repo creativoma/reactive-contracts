@@ -8,9 +8,9 @@ export const ProblemSolution = () => {
               The Problem
             </h3>
             <p className="text-white/70 leading-relaxed">
-              Today's frontend is a second-class citizen. We consume whatever the backend decides to
-              expose, deal with overfetching and underfetching, and pray that API changes don't
-              break production.
+              Today&apos;s frontend is a second-class citizen. We consume whatever the backend
+              decides to expose, deal with overfetching and underfetching, and pray that API changes
+              don&apos;t break production.
             </p>
           </div>
           <div className="space-y-4">
