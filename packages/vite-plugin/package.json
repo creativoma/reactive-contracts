@@ -1,0 +1,63 @@
+{
+  "name": "@reactive-contracts/vite-plugin",
+  "version": "0.2.0",
+  "description": "Vite plugin for Reactive Contracts - auto-compile contracts with HMR support",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@reactive-contracts/compiler": "workspace:*",
+    "@reactive-contracts/core": "workspace:*",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.16"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "reactive-contracts",
+    "contracts",
+    "api",
+    "typescript",
+    "hmr"
+  ],
+  "author": "Reactive Contracts Contributors",
+  "license": "MIT",
+  "homepage": "https://github.com/creativoma/reactive-contracts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativoma/reactive-contracts.git",
+    "directory": "packages/vite-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/creativoma/reactive-contracts/issues"
+  }
+}
