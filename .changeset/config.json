@@ -3,7 +3,12 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [
-    ["@reactive-contracts/core", "@reactive-contracts/react", "@reactive-contracts/server", "@reactive-contracts/compiler"]
+    [
+      "@reactive-contracts/core",
+      "@reactive-contracts/react",
+      "@reactive-contracts/server",
+      "@reactive-contracts/compiler"
+    ]
   ],
   "linked": [],
   "access": "public",
