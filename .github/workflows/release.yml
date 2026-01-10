@@ -49,3 +49,55 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        if: steps.changesets.outputs.published == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('./packages/core/package.json', 'utf8'));
+            const version = pkg.version;
+            const tag = `v${version}`;
+            const isPrerelease = version.includes('beta') || version.includes('alpha');
+
+            // Read CHANGELOG for release notes
+            let changelog = '';
+            try {
+              const changelogContent = fs.readFileSync('./CHANGELOG.md', 'utf8');
+              const versionRegex = new RegExp(`## \\[?${version.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\]?[^#]*`, 's');
+              const match = changelogContent.match(versionRegex);
+              if (match) {
+                changelog = match[0].trim();
+              }
+            } catch (e) {
+              console.log('Could not read changelog:', e.message);
+            }
+
+            const releaseNotes = changelog || `## ${tag}\n\nRelease of Reactive Contracts ${version}`;
+
+            // Check if release already exists
+            try {
+              await github.rest.repos.getReleaseByTag({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag: tag
+              });
+              console.log(`Release ${tag} already exists, skipping...`);
+              return;
+            } catch (e) {
+              // Release doesn't exist, create it
+            }
+
+            // Create the release
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: tag,
+              name: tag,
+              body: releaseNotes,
+              prerelease: isPrerelease,
+              generate_release_notes: false
+            });
+
+            console.log(`Created GitHub Release: ${tag}`);
