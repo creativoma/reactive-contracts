@@ -25,3 +25,4 @@ export {
   isContract,
   isDerivedField,
 } from './contract.js';
+export { parseLatencyToMs, parseDurationToMs } from './utils.js';

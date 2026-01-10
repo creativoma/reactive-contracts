@@ -7,6 +7,7 @@ export interface UseContractOptions<TParams = any> {
   params?: TParams;
   enabled?: boolean;
   refetchInterval?: number;
+  useMockData?: boolean; // If true, uses mock data instead of HTTP
   onSuccess?: (data: any) => void;
   onError?: (error: Error) => void;
 }
