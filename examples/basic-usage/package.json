@@ -1,6 +1,6 @@
 {
   "name": "@reactive-contracts/example-basic-usage",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0",
   "private": true,
   "description": "Basic usage example for Reactive Contracts",
   "type": "module",
