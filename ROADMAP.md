@@ -1,9 +1,9 @@
 # Reactive Contracts - Roadmap & Status
 
-**Version:** 0.1.0-beta  
+**Version:** 0.1.3-beta  
 **Status:** Beta - Production Ready for Early Adopters  
 **Last Updated:** 2026-01-10  
-**Overall Completion:** ~85% (Core complete, DX improvements in progress)
+**Overall Completion:** ~88% (Core complete, examples complete, DX improvements in progress)
 
 ---
 
@@ -14,8 +14,9 @@ Reactive Contracts has reached **Beta status** with all core features implemente
 - ✅ Full code generation (types, resolvers, negotiators)
 - ✅ React hooks with real HTTP integration
 - ✅ Express middleware for backend
-- ✅ Working end-to-end example
+- ✅ **4 working examples** (basic-usage, Next.js, Vite, Astro)
 - ✅ 34 tests passing with good coverage
+- ✅ All lint, typecheck, format, and build passing
 
 **Current State:** Beta - Ready for early adopters and production testing  
 **Next Milestone:** 0.2.0 (Q2 2026) - Build plugins & documentation site
@@ -29,8 +30,8 @@ Reactive Contracts has reached **Beta status** with all core features implemente
 | **Phase 1:** Project Foundation | ✅ Complete | 100% | A | Monorepo, TypeScript, CI/CD, testing |
 | **Phase 2:** Core Implementation | ✅ Complete | 100% | A | Compiler, validation, code generation |
 | **Phase 3:** Framework Integration | ✅ Complete | 100% | A | React hooks, Express middleware, CLI |
-| **Phase 4:** Developer Experience | 🟡 Started | 15% | D+ | Error messages, need build plugins |
-| **Phase 5:** Documentation & Examples | 🟡 Started | 25% | C- | README excellent, need docs site |
+| **Phase 4:** Developer Experience | 🟡 Started | 20% | C- | Error messages, need build plugins |
+| **Phase 5:** Documentation & Examples | 🟡 In Progress | 60% | B | README excellent, 4 examples, need docs site |
 
 ---
 
@@ -70,25 +71,28 @@ Reactive Contracts has reached **Beta status** with all core features implemente
 - ✅ **Configuration file support**
 - ✅ **Working end-to-end example with real server**
 
-### Phase 4: Developer Experience (15%) 🟡
+### Phase 4: Developer Experience (20%) 🟡
 - ✅ CLI output with colors and formatting
 - ✅ Basic error messages
 - ✅ Source maps support
+- ✅ ESLint configuration for generated files
 - ❌ Build tool plugins (Vite, Webpack, esbuild)
 - ❌ Detailed error messages with code snippets
 - ❌ TypeScript language service plugin
 - ❌ Development dashboard
 - ❌ IDE extensions
 
-### Phase 5: Documentation & Examples (25%) 🟡
+### Phase 5: Documentation & Examples (60%) 🟡
 - ✅ Excellent README.md with comprehensive API reference
 - ✅ CLAUDE.md for development guidelines
 - ✅ AGENT.md with implementation phases
 - ✅ CONTRIBUTING.md
 - ✅ Working basic-usage example with real server
+- ✅ **Next.js example** (App Router with Client Components)
+- ✅ **Vite example** (Fast development with HMR)
+- ✅ **Astro example** (Server-rendered with React islands)
 - ❌ Documentation site (Starlight/VitePress)
 - ❌ Comprehensive tutorials and guides
-- ❌ Example gallery (multiple examples)
 - ❌ API reference documentation
 - ❌ Migration guides
 

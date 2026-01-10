@@ -157,5 +157,8 @@ The server includes mock data for two users:
 ## Learn More
 
 - [Main README](../../README.md) - Full documentation
-- [IMPLEMENTATION_ROADMAP](../../IMPLEMENTATION_ROADMAP.md) - Development roadmap
+- [ROADMAP](../../ROADMAP.md) - Development roadmap
 - [CLAUDE.md](../../CLAUDE.md) - Development guidelines
+- [with-nextjs](../with-nextjs) - Next.js example
+- [with-vite](../with-vite) - Vite example
+- [with-astro](../with-astro) - Astro example

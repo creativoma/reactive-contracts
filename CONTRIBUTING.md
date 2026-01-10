@@ -46,10 +46,13 @@ reactive-contracts/
 │   ├── react/         # React hooks and components
 │   ├── server/        # Server-side implementation utilities
 │   └── compiler/      # Contract compiler and CLI
+├── examples/
+│   ├── basic-usage/   # Basic Express + React setup
+│   ├── with-nextjs/   # Next.js App Router example
+│   ├── with-vite/     # Vite + React example
+│   └── with-astro/    # Astro with React islands
 ├── apps/
 │   └── docs/          # Documentation site (planned)
-├── examples/
-│   └── basic-usage/   # Working example with Express server
 └── ...
 ```
 

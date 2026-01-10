@@ -1,7 +1,6 @@
 import { glob } from 'glob';
 import * as path from 'path';
-import { pathToFileURL } from 'url';
-import { register } from 'tsx/esm/api';
+import { createJiti } from 'jiti';
 import { header, success, error, info, warning } from '../utils/logger.js';
 import * as spinner from '../utils/spinner.js';
 import { loadConfig } from '../../config/index.js';
@@ -9,8 +8,11 @@ import { validateContract } from '../../validator/index.js';
 import { analyzeLatency } from '../../analyzer/index.js';
 import type { Contract } from '@reactive-contracts/core';
 
-// Register tsx to handle TypeScript files
-const tsxUnregister = register();
+// Create jiti instance for loading TypeScript files
+const jiti = createJiti(import.meta.url, {
+  interopDefault: true,
+  moduleCache: false, // Disable cache to avoid stale imports
+});
 
 export async function validate(): Promise<void> {
   try {
@@ -47,12 +49,11 @@ export async function validate(): Promise<void> {
       spinner.start(`Validating ${fileName}...`);
 
       try {
-        // Import the contract file (tsx will handle .ts files)
-        const fileUrl = pathToFileURL(file).href;
-        const module = await import(fileUrl);
+        // Import the contract file using jiti (handles TypeScript files)
+        const module = await jiti.import(file);
 
         // Find the contract exports
-        const contractExports = Object.entries(module).filter(
+        const contractExports = Object.entries(module as Record<string, unknown>).filter(
           ([key, value]) =>
             key.endsWith('Contract') &&
             typeof value === 'object' &&
@@ -128,9 +129,6 @@ export async function validate(): Promise<void> {
         invalidCount++;
       }
     }
-
-    // Cleanup tsx registration
-    tsxUnregister();
 
     // Summary
     console.log('');

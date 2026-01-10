@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.2--beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.1.3--beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-beta-orange" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
   <img src="https://img.shields.io/badge/TypeScript-5.4+-blue" alt="TypeScript" />
@@ -419,17 +419,37 @@ export default defineConfig({
 
 ---
 
+## Examples
+
+We provide multiple example projects to help you get started:
+
+| Example | Framework | Description |
+|---------|-----------|-------------|
+| [basic-usage](examples/basic-usage) | React + Express | Basic setup with working server |
+| [with-nextjs](examples/with-nextjs) | Next.js 16 | App Router with Client Components |
+| [with-vite](examples/with-vite) | Vite + React | Fast development with HMR |
+| [with-astro](examples/with-astro) | Astro + React Islands | Server-rendered with hydrated components |
+
+Each example includes:
+- Contract definitions in `contracts/`
+- Generated code in `generated/`
+- Mock Express server for testing
+- Ready-to-run commands
+
+---
+
 ## Roadmap
 
 | Phase | Status | Features |
 |-------|--------|----------|
-| **Alpha** | 🟢 Current | Core contracts, React integration, basic validation |
-| **Beta** | 🟡 Q2 2026 | Edge runtime, latency monitoring, Vue/Svelte support |
-| **1.0** | ⚪ Q4 2026 | Production-ready, enterprise features, IDE plugins |
-| **Future** | ⚪ 2027+ | Multi-service contracts, AI-assisted optimization |
+| **Alpha** | ✅ Complete | Core contracts, React integration, basic validation |
+| **Beta** | 🟢 Current | Framework examples, latency monitoring, build fixes |
+| **1.0** | 🟡 Q2 2026 | Production-ready, build plugins, documentation site |
+| **Future** | ⚪ Q4 2026+ | Edge runtime, Vue/Svelte support, IDE plugins |
 
 ### Upcoming Features
 
+- [ ] Vite plugin for automatic compilation
 - [ ] Visual contract editor
 - [ ] Real-time SLA dashboard
 - [ ] Automatic resolver generation from Prisma

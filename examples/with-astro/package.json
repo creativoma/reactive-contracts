@@ -1,0 +1,36 @@
+{
+  "name": "with-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "server": "tsx server.ts",
+    "dev:all": "concurrently \"pnpm run server\" \"pnpm run dev\"",
+    "compile": "rcontracts compile",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.1",
+    "@reactive-contracts/compiler": "workspace:*",
+    "@reactive-contracts/core": "workspace:*",
+    "@reactive-contracts/react": "workspace:*",
+    "@reactive-contracts/server": "workspace:*",
+    "astro": "^5.16.8",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.5",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3"
+  }
+}

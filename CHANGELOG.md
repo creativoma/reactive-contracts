@@ -5,7 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.0-beta] - 2026-01-10
+## [0.1.3-beta] - 2026-01-10
+
+### Fixed
+
+- **ESLint Configuration**: Added `generated/` folder to ignore patterns in `with-vite` and `with-nextjs` examples to prevent linting auto-generated files
+- **TypeScript Errors**: Fixed `Object.entries()` type errors in compiler commands (`compile.ts` and `validate.ts`) by adding proper type assertions for module imports
+- **Prettier Formatting**: Formatted compiler source files to pass format:check
+
+### Changed
+
+- Updated ESLint configs to properly exclude generated code directories
+- Improved TypeScript strictness compliance in compiler package
+
+---
+
+## [0.1.2-beta] - 2026-01-09
+
+### Added
+
+- **New Examples**: Added `with-nextjs`, `with-vite`, and `with-astro` example projects demonstrating framework integrations
+- **PostsList Component**: New component showing multiple contracts in action
+- **Mock Server**: Each example now includes a working Express mock server
+
+### Changed
+
+- Improved example documentation with clearer setup instructions
+- Enhanced contract definitions with more realistic data shapes
+
+---
+
+## [0.1.1-beta] - 2026-01-08
+
+### Added
+
+- Initial example implementations with real server integration
+- Contract client configuration with mock mode for development
+
+### Fixed
+
+- Build configuration for dual ESM/CJS output
+- Package exports configuration
+
+---
+
+## [0.1.0-beta] - 2026-01-07
 
 ### 🎉 First Beta Release
 
@@ -75,5 +119,8 @@ This is the first beta release of Reactive Contracts, marking the transition fro
 
 ---
 
+[0.1.3-beta]: https://github.com/creativoma/reactive-contracts/releases/tag/v0.1.3-beta
+[0.1.2-beta]: https://github.com/creativoma/reactive-contracts/releases/tag/v0.1.2-beta
+[0.1.1-beta]: https://github.com/creativoma/reactive-contracts/releases/tag/v0.1.1-beta
 [0.1.0-beta]: https://github.com/creativoma/reactive-contracts/releases/tag/v0.1.0-beta
 [0.1.0-alpha]: https://github.com/creativoma/reactive-contracts/releases/tag/v0.1.0-alpha

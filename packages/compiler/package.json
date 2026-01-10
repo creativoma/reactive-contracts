@@ -31,9 +31,9 @@
     "commander": "^14.0.2",
     "fs-extra": "^11.3.3",
     "glob": "^13.0.0",
+    "jiti": "^2.4.2",
     "ora": "^9.0.0",
     "picocolors": "^1.1.1",
-    "tsx": "^4.21.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {

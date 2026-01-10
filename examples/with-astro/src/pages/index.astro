@@ -1,0 +1,23 @@
+---
+import { App } from '../components/App';
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Reactive Contracts - Astro Example</title>
+	</head>
+	<body>
+		<header class="app-header">
+			<h1>🔄 Reactive Contracts Demo</h1>
+			<p>Bidirectional API contracts that put frontend in control</p>
+			<span class="badge">Astro + React Islands</span>
+		</header>
+
+		<App client:load />
+	</body>
+</html>

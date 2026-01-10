@@ -1,0 +1,43 @@
+{
+  "name": "with-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "server": "tsx server.ts",
+    "dev:all": "concurrently \"pnpm run server\" \"pnpm run dev\"",
+    "compile": "rcontracts compile",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reactive-contracts/compiler": "workspace:*",
+    "@reactive-contracts/core": "workspace:*",
+    "@reactive-contracts/react": "workspace:*",
+    "@reactive-contracts/server": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.5",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "express": "^5.2.1",
+    "globals": "^17.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.52.0",
+    "vite": "^7.3.1"
+  }
+}

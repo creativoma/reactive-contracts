@@ -1,0 +1,39 @@
+{
+  "name": "with-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "server": "tsx server.ts",
+    "dev:all": "concurrently \"pnpm run server\" \"pnpm run dev\"",
+    "compile": "rcontracts compile",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@reactive-contracts/compiler": "workspace:*",
+    "@reactive-contracts/core": "workspace:*",
+    "@reactive-contracts/react": "workspace:*",
+    "@reactive-contracts/server": "workspace:*",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.5",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.1.1",
+    "express": "^5.2.1",
+    "tailwindcss": "^4.1.18",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
