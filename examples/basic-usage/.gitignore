@@ -1,5 +1,5 @@
-# Generated files
-generated/
+# Note: Generated files ARE committed for examples to work in CI
+# generated/
 
 # Dependencies
 node_modules/
