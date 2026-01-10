@@ -12,10 +12,10 @@ importers:
         specifier: ^2.29.8
         version: 2.29.8(@types/node@25.0.5)
       '@eslint/js':
-        specifier: ^9.39.2
-        version: 9.39.2
+        specifier: ^10.0.0
+        version: 10.0.0
       '@types/node':
-        specifier: ^25.0.5
+        specifier: ^25.0.3
         version: 25.0.5
       globals:
         specifier: ^17.0.0
@@ -48,17 +48,17 @@ importers:
         specifier: ^2.8.5
         version: 2.8.5
       express:
-        specifier: ^5.0.1
+        specifier: ^5.2.1
         version: 5.2.1
     devDependencies:
       '@reactive-contracts/compiler':
         specifier: workspace:*
         version: link:../../packages/compiler
       '@types/cors':
-        specifier: ^2.8.17
+        specifier: ^2.8.19
         version: 2.8.19
       '@types/express':
-        specifier: ^5.0.0
+        specifier: ^5.0.6
         version: 5.0.6
       '@types/node':
         specifier: ^25.0.3
@@ -534,6 +534,11 @@ packages:
   '@eslint/eslintrc@3.3.3':
     resolution: {integrity: sha512-Kr+LPIUVKz2qkx1HAMH8q1q6azbqBAsXJUxBl/ODDuVPX45Z9DfwB8tPjTi6nNZ8BuM3nbJxC5zCAg5elnBUTQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@10.0.0':
+    resolution: {integrity: sha512-J2VKrn6YUBegZFzRQVOVA8jk7VViV/MXhQUvXuCUK1I2RGGT2E+bmNGOsgtdO9Wo25Kd3hfZFuCm8LcfsUFV7g==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version should not be used.
 
   '@eslint/js@9.39.2':
     resolution: {integrity: sha512-q1mjIoW1VX4IvSocvM/vbTiveKC4k9eLrajNEuSsmjymSDEbpGddtpfOoN7YGAqBK3NG+uqo8ia4PDTt8buCYA==}
@@ -2842,6 +2847,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@eslint/js@10.0.0': {}
+
   '@eslint/js@9.39.2': {}
 
   '@eslint/object-schema@2.1.7': {}
@@ -3022,7 +3029,7 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/chai@5.2.3':
     dependencies:
@@ -3031,11 +3038,11 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/cors@2.8.19':
     dependencies:
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/deep-eql@4.0.2': {}
 
@@ -3043,7 +3050,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.1.0':
     dependencies:
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -3057,7 +3064,7 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/http-errors@2.0.5': {}
 
@@ -3065,7 +3072,7 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/node@12.20.55': {}
 
@@ -3092,12 +3099,12 @@ snapshots:
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 25.0.3
+      '@types/node': 25.0.5
 
   '@typescript-eslint/eslint-plugin@8.52.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(typescript@5.9.3)':
     dependencies:
@@ -3215,14 +3222,6 @@ snapshots:
       '@vitest/utils': 4.0.16
       chai: 6.2.2
       tinyrainbow: 3.0.3
-
-  '@vitest/mocker@4.0.16(vite@7.3.1(@types/node@25.0.3)(tsx@4.21.0))':
-    dependencies:
-      '@vitest/spy': 4.0.16
-      estree-walker: 3.0.3
-      magic-string: 0.30.21
-    optionalDependencies:
-      vite: 7.3.1(@types/node@25.0.3)(tsx@4.21.0)
 
   '@vitest/mocker@4.0.16(vite@7.3.1(@types/node@25.0.5)(tsx@4.21.0))':
     dependencies:
@@ -4791,7 +4790,7 @@ snapshots:
   vitest@4.0.16(@types/node@25.0.3)(jsdom@27.4.0)(tsx@4.21.0):
     dependencies:
       '@vitest/expect': 4.0.16
-      '@vitest/mocker': 4.0.16(vite@7.3.1(@types/node@25.0.3)(tsx@4.21.0))
+      '@vitest/mocker': 4.0.16(vite@7.3.1(@types/node@25.0.5)(tsx@4.21.0))
       '@vitest/pretty-format': 4.0.16
       '@vitest/runner': 4.0.16
       '@vitest/snapshot': 4.0.16
