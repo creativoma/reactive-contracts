@@ -45,11 +45,11 @@ reactive-contracts/
 │   ├── core/          # Core contract types and functions
 │   ├── react/         # React hooks and components
 │   ├── server/        # Server-side implementation utilities
-│   ├── compiler/      # Contract compiler (planned)
-│   └── cli/           # CLI tool (planned)
+│   └── compiler/      # Contract compiler and CLI
 ├── apps/
 │   └── docs/          # Documentation site (planned)
-├── examples/          # Example projects
+├── examples/
+│   └── basic-usage/   # Working example with Express server
 └── ...
 ```
 

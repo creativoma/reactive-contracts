@@ -1,6 +1,6 @@
 {
   "name": "@reactive-contracts/compiler",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-beta",
   "description": "Build-time compiler and validator for Reactive Contracts",
   "type": "module",
   "bin": {

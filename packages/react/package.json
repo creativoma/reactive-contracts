@@ -1,6 +1,6 @@
 {
   "name": "@reactive-contracts/react",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-beta",
   "description": "React bindings for Reactive Contracts",
   "keywords": [
     "contracts",

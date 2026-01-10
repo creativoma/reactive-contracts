@@ -1,23 +1,24 @@
 # Reactive Contracts - Roadmap & Status
 
-**Version:** 0.1.0-alpha (MVP-ready!)  
-**Status:** Alpha - Functional MVP  
-**Last Updated:** 2026-01-09  
-**Overall Completion:** ~85% (MVP complete, Beta features pending)
+**Version:** 0.1.0-beta  
+**Status:** Beta - Production Ready for Early Adopters  
+**Last Updated:** 2026-01-10  
+**Overall Completion:** ~85% (Core complete, DX improvements in progress)
 
 ---
 
 ## 🎯 Executive Summary
 
-Reactive Contracts has achieved **MVP-ready status** with all critical Phase 2-3 features implemented:
+Reactive Contracts has reached **Beta status** with all core features implemented and tested:
 - ✅ Core compiler with TypeScript support
 - ✅ Full code generation (types, resolvers, negotiators)
 - ✅ React hooks with real HTTP integration
 - ✅ Express middleware for backend
 - ✅ Working end-to-end example
+- ✅ 34 tests passing with good coverage
 
-**Current State:** Fully functional Alpha ready for real-world testing  
-**Next Milestone:** Beta (Q2 2026) - Advanced features & tooling
+**Current State:** Beta - Ready for early adopters and production testing  
+**Next Milestone:** 0.2.0 (Q2 2026) - Build plugins & documentation site
 
 ---
 
