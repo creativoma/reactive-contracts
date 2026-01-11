@@ -27,14 +27,16 @@ export const Hero = () => {
               {getVersionBadge()} • {projectConfig.license} License
             </div>
             {isPreRelease() && (
-              <div className="inline-flex gap-2 items-center px-3 py-2 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-200 text-xs">
-                <AlertCircle className="h-4 w-4" />
-                <span className="font-medium">Beta Release</span>
-                <span className="text-amber-200/70">•</span>
-                <span className="text-amber-200/90">Production Ready for Early Adopters</span>
+              <div className="inline-flex flex-wrap gap-2 items-center justify-center px-3 py-2 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-200 text-xs max-w-full">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                <span className="font-medium whitespace-nowrap">Beta Release</span>
+                <span className="text-amber-200/70 hidden sm:inline">•</span>
+                <span className="text-amber-200/90 text-center sm:text-left hidden sm:block">
+                  Production Ready for Early Adopters
+                </span>
                 <Link
                   href="https://github.com/creativoma/reactive-contracts/blob/main/ROADMAP.md"
-                  className="text-amber-100 hover:text-amber-50 underline underline-offset-2 transition-colors"
+                  className="text-amber-100 hover:text-amber-50 underline underline-offset-2 transition-colors whitespace-nowrap"
                   target="_blank"
                 >
                   View Roadmap

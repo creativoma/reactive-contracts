@@ -44,14 +44,14 @@ export const TypeSafetyShowcase = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             <div className="flex items-center gap-2">
               <XCircle className="h-5 w-5 text-red-400" />
               <h4 className="text-lg font-semibold text-white">Without Contracts</h4>
             </div>
             <CodeBlock code={beforeExample} />
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-400" />
               <h4 className="text-lg font-semibold text-white">With Contracts</h4>

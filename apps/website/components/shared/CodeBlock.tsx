@@ -41,10 +41,10 @@ export const CodeBlock = ({
 
   if (inline) {
     return (
-      <Card className="p-4 bg-white/3 border-white/20 group relative overflow-hidden">
+      <Card className="p-4 bg-white/3 border-white/20 group relative overflow-hidden min-w-0">
         <div className="flex items-center gap-3 text-xs font-mono overflow-x-auto">
           {icon && <span className="shrink-0">{icon}</span>}
-          <code className="text-white">{code}</code>
+          <code className="text-white whitespace-nowrap">{code}</code>
           <button
             onClick={handleCopy}
             className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/10 rounded"
@@ -62,7 +62,7 @@ export const CodeBlock = ({
   }
 
   return (
-    <Card className="p-6 bg-white/3 border-white/20 overflow-hidden group relative">
+    <Card className="p-6 bg-white/3 border-white/20 group relative overflow-hidden min-w-0">
       <button
         onClick={handleCopy}
         className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded"
@@ -75,7 +75,7 @@ export const CodeBlock = ({
         )}
       </button>
       <div
-        className="shiki-wrapper overflow-x-auto [&>pre]:bg-transparent! [&>pre]:p-0! [&>pre]:m-0! [&>pre]:text-xs [&>pre]:font-mono"
+        className="shiki-wrapper overflow-x-auto [&>pre]:bg-transparent! [&>pre]:p-0! [&>pre]:m-0! [&>pre]:text-xs [&>pre]:font-mono [&>pre]:whitespace-pre"
         dangerouslySetInnerHTML={{
           __html: highlightedCode || `<pre><code>${code}</code></pre>`,
         }}

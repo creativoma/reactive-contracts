@@ -35,13 +35,13 @@ export const Installation = () => {
 
         <div className="space-y-4">
           {steps.map((step) => (
-            <Card key={step.number} className="p-6 bg-white/3 border-white/20">
+            <Card key={step.number} className="p-6 bg-white/3 border-white/20 overflow-hidden">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center text-xs shrink-0 mt-1">
                     {step.number}
                   </div>
-                  <div className="space-y-3 flex-1">
+                  <div className="space-y-3 flex-1 min-w-0">
                     <h4 className=" text-white">{step.title}</h4>
                     <CodeBlock
                       code={step.code}

@@ -7,10 +7,10 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-24">
+    <footer className="mt-0 sm:mt-24">
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-white/60">
+          <div className="text-sm text-white/60 text-center text-balance md:text-left">
             {projectConfig.license} License © {currentYear} {projectConfig.author}
           </div>
           <div className="flex items-center gap-6">
