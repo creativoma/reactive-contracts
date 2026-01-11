@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Github } from 'lucide-react';
+import GithubIcon from '@/icons/github-icon';
 
 export const Header = () => {
   return (
@@ -12,22 +12,25 @@ export const Header = () => {
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link
-              href="#features"
+              href="#how-it-works"
               className="text-sm text-white/60 hover:text-white transition-colors"
             >
-              Features
-            </Link>
-            <Link
-              href="#quick-start"
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Quick Start
+              How It Works
             </Link>
             <Link
               href="#examples"
               className="text-sm text-white/60 hover:text-white transition-colors"
             >
               Examples
+            </Link>
+            <Link
+              href="#packages"
+              className="text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Packages
+            </Link>
+            <Link href="#faq" className="text-sm text-white/60 hover:text-white transition-colors">
+              FAQ
             </Link>
             <Link
               href="https://github.com/creativoma/reactive-contracts"
@@ -44,7 +47,7 @@ export const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4 grayscale" />
             </Link>
           </Button>
           <Button size="sm" asChild className="bg-white text-black hover:bg-white/90">
