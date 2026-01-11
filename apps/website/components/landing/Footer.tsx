@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import GithubIcon from '@/icons/github-icon';
+import NpmIcon from '@/icons/npm-icon';
 import { projectConfig } from '@/lib/project-config';
 
 export const Footer = () => {
@@ -14,14 +16,16 @@ export const Footer = () => {
           <div className="flex items-center gap-6">
             <Link
               href={projectConfig.repository.url}
-              className="text-sm text-white/60 hover:text-white transition-colors"
+              className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5"
             >
+              <GithubIcon className="h-3.5 w-3.5 grayscale" />
               GitHub
             </Link>
             <Link
               href={projectConfig.npm.core}
-              className="text-sm text-white/60 hover:text-white transition-colors"
+              className="text-sm text-white/60 hover:text-white transition-colors flex items-center gap-1.5"
             >
+              <NpmIcon className="h-3.5 w-3.5 grayscale" />
               npm
             </Link>
             <Link

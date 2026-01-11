@@ -1,4 +1,5 @@
 import { Card } from '@/components/ui/card';
+import { Check, X, Clock, Zap } from 'lucide-react';
 
 const comparisons = [
   {
@@ -85,6 +86,74 @@ export const Comparison = () => {
                 </div>
               </Card>
             ))}
+          </div>
+
+          <div className="pt-12 space-y-6">
+            <div className="text-center space-y-2">
+              <h4 className="text-2xl md:text-3xl font-heading text-white">
+                Build-time vs Runtime Validation
+              </h4>
+              <p className="text-white/60 text-sm max-w-xl mx-auto">
+                Most tools validate at runtime when errors are expensive. Reactive Contracts
+                validates at build time when errors are free.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <Card className="p-6 bg-red-500/5 border-red-500/20">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-5 w-5 text-red-400" />
+                    <h5 className="text-lg font-semibold text-white">Runtime Validation</h5>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2 text-white/70">
+                      <X className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>Errors discovered in production</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <X className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>Manual type synchronization required</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <X className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>API changes break silently</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <X className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                      <span>Performance issues found by users</span>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-green-500/5 border-green-500/20">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-5 w-5 text-green-400" />
+                    <h5 className="text-lg font-semibold text-white">Build-time Validation</h5>
+                  </div>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start gap-2 text-white/70">
+                      <Check className="h-4 w-4 text-green-400 shrink-0 mt-0.5" />
+                      <span>Errors caught during compilation</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <Check className="h-4 w-4 text-green-400 shrink-0 mt-0.5" />
+                      <span>Types auto-generated and synced</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <Check className="h-4 w-4 text-green-400 shrink-0 mt-0.5" />
+                      <span>Breaking changes fail the build</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-white/70">
+                      <Check className="h-4 w-4 text-green-400 shrink-0 mt-0.5" />
+                      <span>Latency constraints verified upfront</span>
+                    </li>
+                  </ul>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

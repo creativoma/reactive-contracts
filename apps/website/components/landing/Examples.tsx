@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Layers } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import AstroIcon from '@/icons/astro-icon';
 import NextjsIcon from '@/icons/nextjs-icon';
 import ViteIcon from '@/icons/vite-icon';
+import ReactIcon from '@/icons/react-icon';
 import { projectConfig } from '@/lib/project-config';
 
 const examples = [
@@ -13,7 +14,7 @@ const examples = [
     description: 'Simple setup with React + Express server. Perfect for learning the fundamentals.',
     framework: 'React + Express',
     href: projectConfig.examples.basicUsage,
-    icon: Layers,
+    icon: ReactIcon,
     features: ['Contract definitions', 'Mock server', 'Basic hooks'],
   },
   {
@@ -64,7 +65,7 @@ export const Examples = () => {
               >
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-6 grayscale">
+                    <div className="flex items-center gap-6">
                       <Icon className="size-10" />
                       <div>
                         <h4 className=" text-white">{example.title}</h4>

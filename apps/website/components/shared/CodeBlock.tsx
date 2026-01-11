@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { Card } from '@/components/ui/card';
 import { Check, Copy } from 'lucide-react';
+import { codeToHtml } from 'shiki';
 
 interface CodeBlockProps {
   code: string;
@@ -14,11 +15,23 @@ interface CodeBlockProps {
 
 export const CodeBlock = ({
   code,
+  language = 'typescript',
   icon,
   inline = false,
-  showLineNumbers = false,
 }: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
+  const [highlightedCode, setHighlightedCode] = useState<string>('');
+
+  useEffect(() => {
+    if (!inline) {
+      codeToHtml(code, {
+        lang: language,
+        theme: 'github-dark-dimmed',
+      })
+        .then((html) => setHighlightedCode(html))
+        .catch(() => setHighlightedCode(''));
+    }
+  }, [code, language, inline]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -29,7 +42,7 @@ export const CodeBlock = ({
   if (inline) {
     return (
       <Card className="p-4 bg-white/3 border-white/20 group relative overflow-hidden">
-        <div className="flex items-center gap-3 text-sm font-mono overflow-x-auto">
+        <div className="flex items-center gap-3 text-xs font-mono overflow-x-auto">
           {icon && <span className="shrink-0">{icon}</span>}
           <code className="text-white">{code}</code>
           <button
@@ -48,13 +61,11 @@ export const CodeBlock = ({
     );
   }
 
-  const lines = code.split('\n');
-
   return (
     <Card className="p-6 bg-white/3 border-white/20 overflow-hidden group relative">
       <button
         onClick={handleCopy}
-        className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded"
+        className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded"
         aria-label="Copy to clipboard"
       >
         {copied ? (
@@ -63,18 +74,12 @@ export const CodeBlock = ({
           <Copy className="h-4 w-4 text-white/60" />
         )}
       </button>
-      <pre className="text-sm overflow-x-auto">
-        <code className="font-mono text-white">
-          {showLineNumbers
-            ? lines.map((line, i) => (
-                <div key={i} className="flex">
-                  <span className="text-white/30 select-none w-8 text-right pr-4">{i + 1}</span>
-                  <span>{line}</span>
-                </div>
-              ))
-            : code}
-        </code>
-      </pre>
+      <div
+        className="shiki-wrapper overflow-x-auto [&>pre]:bg-transparent! [&>pre]:p-0! [&>pre]:m-0! [&>pre]:text-xs [&>pre]:font-mono"
+        dangerouslySetInnerHTML={{
+          __html: highlightedCode || `<pre><code>${code}</code></pre>`,
+        }}
+      />
     </Card>
   );
 };
