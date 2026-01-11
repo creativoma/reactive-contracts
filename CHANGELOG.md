@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added - Website
+
+- **Landing Page Enhancements**:
+  - Added "How It Works" section with 4-step flow diagram explaining the bidirectional contract lifecycle
+  - Added "Type Safety Showcase" section with before/after code examples demonstrating full TypeScript inference
+  - Added "Packages" section with bento grid layout showcasing all 4 packages with install commands and npm links
+  - Added comprehensive FAQ section with 8 common questions (GraphQL, tRPC, REST, SSR, bundle size, etc.)
+  - Added beta status banner in hero section with link to roadmap
+  - Enhanced comparison section with build-time vs runtime validation comparison table
+  - Added syntax highlighting with Shiki using github-dark-dimmed theme for professional code presentation
+  - Added custom NPM and GitHub icons for consistent branding across the site
+
+### Changed - Website
+
+- Updated header navigation to focus on key sections (How It Works, Examples, Packages, FAQ)
+- Improved CodeBlock component with professional syntax highlighting and better visual consistency
+- Enhanced project config to include all package npm links (core, react, server, compiler)
+- Reorganized page structure for better user flow and information architecture
+
+---
+
 ## [0.1.3-beta] - 2026-01-10
 
 ### Fixed
