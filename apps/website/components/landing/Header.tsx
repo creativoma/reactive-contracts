@@ -50,7 +50,11 @@ export const Header = () => {
               <GithubIcon className="h-4 w-4 grayscale" />
             </Link>
           </Button>
-          <Button size="sm" asChild className="bg-white text-black hover:bg-white/90">
+          <Button
+            size="sm"
+            asChild
+            className="hidden md:inline-flex bg-white text-black hover:bg-white/90"
+          >
             <Link href="#installation">Get Started</Link>
           </Button>
         </div>
