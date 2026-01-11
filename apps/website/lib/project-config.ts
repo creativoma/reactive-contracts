@@ -13,6 +13,8 @@ export const projectConfig = {
   },
   npm: {
     core: 'https://npmjs.com/package/@reactive-contracts/core',
+    react: 'https://npmjs.com/package/@reactive-contracts/react',
+    server: 'https://npmjs.com/package/@reactive-contracts/server',
     compiler: 'https://npmjs.com/package/@reactive-contracts/compiler',
   },
   examples: {
