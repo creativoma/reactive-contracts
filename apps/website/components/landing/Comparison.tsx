@@ -88,7 +88,6 @@ export const Comparison = () => {
             ))}
           </div>
 
-          {/* Build-time vs Runtime Comparison */}
           <div className="pt-12 space-y-6">
             <div className="text-center space-y-2">
               <h4 className="text-2xl md:text-3xl font-heading text-white">
@@ -101,7 +100,6 @@ export const Comparison = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {/* Runtime Validation */}
               <Card className="p-6 bg-red-500/5 border-red-500/20">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
@@ -129,7 +127,6 @@ export const Comparison = () => {
                 </div>
               </Card>
 
-              {/* Build-time Validation */}
               <Card className="p-6 bg-green-500/5 border-green-500/20">
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
