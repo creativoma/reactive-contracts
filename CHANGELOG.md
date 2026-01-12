@@ -28,6 +28,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.1.4-beta] - 2026-01-12
+
+### Added
+
+- **AI Code Review Skill**: Installable command for AI coding assistants (Claude Code, Cursor, OpenCode, Windsurf, Gemini CLI)
+  - Comprehensive validation rules derived from compiler validator
+  - Checks for naming conventions (PascalCase contracts, camelCase fields)
+  - Detects anti-patterns (derived fields in resolvers, missing error handling)
+  - Validates performance issues (aggressive latency constraints, missing cache strategies)
+  - Provides actionable suggestions with file:line:column format for 1-click navigation
+  - Installation script: `curl -fsSL https://raw.githubusercontent.com/creativoma/reactive-contracts/main/scripts/install-skill.sh | bash`
+  - Usage: `/reactive-contracts-review <file>`
+
+### Changed
+
+- Updated compiler package to v0.2.1 (includes AI review template)
+- Updated core, react, and server packages to v0.1.4-beta
+- Enhanced README with AI-Assisted Code Review section and usage examples
+- Updated ROADMAP to reflect Phase 4 DX improvement progress (25% → 35%)
+
+---
+
 ## [0.1.3-beta] - 2026-01-10
 
 ### Fixed

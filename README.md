@@ -9,11 +9,12 @@
   <a href="#quick-start">Quick Start</a> •
   <a href="#core-concepts">Concepts</a> •
   <a href="#api-reference">API</a> •
+  <a href="#ai-assisted-code-review">AI Review</a> •
   <a href="#roadmap">Roadmap</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.3--beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.1.4--beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-beta-orange" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
   <img src="https://img.shields.io/badge/TypeScript-5.4+-blue" alt="TypeScript" />
@@ -456,6 +457,56 @@ Each example includes:
 - Generated code in `generated/`
 - Mock Express server for testing
 - Ready-to-run commands
+
+---
+
+## AI-Assisted Code Review
+
+Get instant feedback on your contracts with our installable AI skill for AI coding assistants:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/creativoma/reactive-contracts/main/scripts/install-skill.sh | bash
+```
+
+Or install manually by running the script from the repository:
+
+```bash
+./scripts/install-skill.sh
+```
+
+### Usage
+
+Once installed, validate your contracts in any AI coding assistant:
+
+```
+/reactive-contracts-review contracts/user.ts
+```
+
+The skill will analyze your code for:
+- ✅ Naming conventions (PascalCase contracts, camelCase fields)
+- ✅ Type safety issues (invalid primitives, missing type annotations)
+- ✅ Anti-patterns (derived fields in resolvers, missing error handling)
+- ✅ Performance issues (aggressive latency constraints, missing cache strategies)
+- ✅ Best practices (fallback strategies, dependency declarations)
+
+**Supported AI Tools:**
+- [Claude Code](https://claude.ai/code)
+- [Cursor](https://cursor.com)
+- [OpenCode](https://opencode.ai)
+- [Windsurf](https://codeium.com/windsurf)
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+
+### Example Output
+
+```
+contracts/user.ts:15:3 - ERROR Derived field 'status' provided in resolver
+  Suggestion: Remove 'status' from resolver return value. It will be computed automatically.
+  Reference: Derived fields are computed from dependencies, not provided by backend.
+
+contracts/user.ts:8:10 - WARNING Contract name 'userProfile' should be PascalCase
+  Suggestion: Rename to 'UserProfile'
+  Reference: Contract names must be PascalCase for consistency.
+```
 
 ---
 
